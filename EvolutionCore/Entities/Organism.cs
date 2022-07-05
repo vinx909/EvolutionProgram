@@ -13,6 +13,10 @@ namespace EvolutionCore.Entities
         /// </summary>
         public int Id { get; set; }
         /// <summary>
+        /// Id of the world the organism exists in
+        /// </summary>
+        public int IdWorld { get; set; }
+        /// <summary>
         /// the sequance that defines the features of the organism
         /// </summary>
         public string Sequence { get; set; }
