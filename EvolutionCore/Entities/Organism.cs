@@ -6,16 +6,12 @@ using System.Threading.Tasks;
 
 namespace EvolutionCore.Entities
 {
-    public class Organism
+    public class Organism : IdEntity
     {
-        /// <summary>
-        /// the Id of the organism. purely relavent so the correct organism can be called for
-        /// </summary>
-        public int Id { get; set; }
         /// <summary>
         /// Id of the world the organism exists in
         /// </summary>
-        public int IdWorld { get; set; }
+        public int WorldId { get; set; }
         /// <summary>
         /// the sequance that defines the features of the organism
         /// </summary>
@@ -29,12 +25,15 @@ namespace EvolutionCore.Entities
         /// </summary>
         public bool Alive { get; set; }
         /// <summary>
-        /// defines how many childeren the organism has had
+        /// the id of the parent
         /// </summary>
-        public int NChilderen { get; set; }
+        public int? ParentId => parentId;
         /// <summary>
-        /// keeps track of all parents of the organism
+        /// the age of the world when the world started
         /// </summary>
-        public string Ancestry { get; set; }
+        public int BirthWorldAge => birthWorldAge;
+
+        private readonly int? parentId;
+        private readonly int birthWorldAge;
     }
 }

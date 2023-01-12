@@ -11,6 +11,6 @@ namespace EvolutionCore.Entities
         /// <summary>
         /// Id of the world the log is about
         /// </summary>
-        public int IdWorld { get; set; }
+        public int WorldId { get; set; }
     }
 }

@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace EvolutionCore.Entities
 {
-    public class World
+    public class World : IdEntity
     {
-        /// <summary>
-        /// the Id of the world. purely relavent so the correct world can be called for
-        /// </summary>
-        public int Id { get; set; }
         /// <summary>
         /// amount of food in the world
         /// </summary>

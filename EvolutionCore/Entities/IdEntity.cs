@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace EvolutionCore.Entities
 {
-    public class OrganismLog : Log
+    public class IdEntity
     {
         /// <summary>
-        /// Id of the organism the log is about
+        /// Id of the entity
         /// </summary>
-        public int OrganismId { get; set; }
+        public int Id { get; set; }
     }
 }
