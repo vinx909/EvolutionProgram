@@ -24,14 +24,28 @@ namespace EvolutionCore.Services
 
         public async Task<IEnumerable<Organism>> GetOrganisms(int idWorld, bool mustBeAlive = true)
         {
-            //todo: ! GetOrganisms funtionality
-            throw new NotImplementedException();
+            if (mustBeAlive)
+            {
+                return await organismRepository.GetAll(o => o.WorldId == idWorld && o.Alive == true);
+            }
+            else
+            {
+                return await organismRepository.GetAll(o => o.WorldId == idWorld);
+            }
         }
 
         public async Task<IEnumerable<int>> GetOrganismsIds(int idWorld, bool mustBeAlive = true)
         {
-            //todo: ! GetOrganisms funtionality
-            throw new NotImplementedException();
+
+            IEnumerable<Organism> organisms = await GetOrganisms(idWorld, mustBeAlive);
+            int[] ids = new int[organisms.Count()];
+            int index = 0;
+            foreach (Organism organism in organisms)
+            {
+                ids[index] = organism.Id;
+                index++;
+            }
+            return ids;
         }
 
         public async Task<Organism> GetRandomOrganism(int idWorld, bool mustBeAlive = true)
