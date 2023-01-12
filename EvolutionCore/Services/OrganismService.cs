@@ -11,6 +11,9 @@ namespace EvolutionCore.Services
     public class OrganismService : IOrganismService
     {
         private IRepository<Organism> organismRepository;
+        private static Random random;
+
+        private Random Random { get { if (random == null) { random = new(); } return random; } }
 
         public OrganismService(IRepository<Organism> organismRepository)
         {
@@ -50,14 +53,13 @@ namespace EvolutionCore.Services
 
         public async Task<Organism> GetRandomOrganism(int idWorld, bool mustBeAlive = true)
         {
-            //todo: ! GetRandomOrganism functionality
-            throw new NotImplementedException();
+            List<Organism> organisms = new(await GetOrganisms(idWorld, mustBeAlive));
+            return organisms[Random.Next(organisms.Count())];
         }
 
         public async Task<int> GetRandomOrganismId(int idWorld, bool mustBeAlive = true)
         {
-            //todo: ! GetRandomOrganismId functionality
-            throw new NotImplementedException();
+            return (await GetRandomOrganism(idWorld, mustBeAlive)).Id;
         }
 
         public async Task RunAllOrganisms(int idWorld)

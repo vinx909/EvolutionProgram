@@ -89,6 +89,5 @@ namespace EvolutionCoreTests.OrganismService
             }
             return filteredOrganisms;
         }
-        //todo: all GetOrganismsIds tests
     }
 }
